@@ -10,15 +10,14 @@ router.get('/', (req, res) => {
       attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
     }
   })
-    .then(dbCatData => {
-      if(!dbCatData) {
-        res.status(404).json({message: 'No categories found'});
+    .then(dbData => {
+      if(!dbData) {
+        res.status(404).json({message: 'None Found'});
         return;
       }
-      res.json(dbCatData);
+      res.json(dbData);
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err)
     });
 });
@@ -34,12 +33,12 @@ router.get('/:id', (req, res) => {
       attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
     }
   })
-    .then(dbCatData => {
-      if(!dbCatData) {
-        res.status(404).json({message: 'No categories found'});
+    .then(dbData => {
+      if(!dbData) {
+        res.status(404).json({message: 'None Found'});
         return;
       }
-      res.json(dbCatData);
+      res.json(dbData);
     })
     .catch(err => {
       console.log(err);
@@ -66,15 +65,14 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-    .then(dbCatData => {
-      if (!dbCatData) {
+    .then(dbData => {
+      if (!dbData) {
         res.status(404).json({message:'No category found.'});
         return;
       }
-      res.json(dbCatData);
+      res.json(dbData);
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err);
     });
 });
@@ -86,15 +84,14 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-    .then(dbCatData => {
-      if (!dbCatData){
-        res.status(404).json({message: 'No category found.'});
+    .then(dbData => {
+      if (!dbData){
+        res.status(404).json({message: 'None Found.'});
         return;
       }
-      res.json(dbCatData);
+      res.json(dbData);
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err);
     });
 });
